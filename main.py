@@ -1,6 +1,13 @@
 from modules.employer import Employer
 from modules.company import Company
 
+"""I have tried to do everything
+ according to the assignment however, 
+ I personally don't like the class company 
+ I would add more methods to them which would make them easier to manage or 
+ I would make the classe company into more classes to make the code more compatible with the rules of Solid  """
+
+
 if __name__ == "__main__":
     obj = Company()
     x = 1
@@ -32,4 +39,4 @@ if __name__ == "__main__":
             obj.apply_bonus_for_all_from_department()
         elif x == 8:
             obj.save_employer_to_file(input("Give path to file"))
-  
+
