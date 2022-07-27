@@ -6,8 +6,8 @@ class Employer:
     id: int = 0
 
     def __init__(self, first_name: str, last_name: str, age: int, job: str, salary: float, bonus: float):
-        self.id = self.id + 1
-        self.id_employer = self.id + 1
+        Employer.id = Employer.id + 1
+        self.id_employer = self.id
         self.first_name = first_name
         self.last_name = last_name
         self.age = age

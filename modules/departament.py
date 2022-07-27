@@ -10,18 +10,19 @@ class Department:
     departments_names = []
 
     def __init__(self, name):
-        self.id = self.id + 1
-        self.id_department = self.id + 1
+        Department.id = Department.id + 1
+        self.id_department = self.id
         self.name = name
         self.departments_names.append(self.name)
         self.users = []
 
-    def display_departments(self):
-        if self.departments_names is None:
+    @classmethod
+    def display_departments(cls):
+        if cls.departments_names is None:
             print("No existing departments")
         else:
-            for name in self.departments_names:
-                print(f"id: {str(name.id_department)} name of department {name.name}")
+            for name in cls.departments_names:
+                print(f"name of department {name}")
 
     def display_employers_in_department(self):
         if self.users is None:
@@ -29,3 +30,6 @@ class Department:
         else:
             for name in self.users:
                 print(name)
+
+    def __str__(self):
+        return f" id: {str(self.id_department)} department name: {self.name}"
