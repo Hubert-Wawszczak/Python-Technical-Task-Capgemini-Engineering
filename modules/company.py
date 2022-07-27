@@ -1,5 +1,6 @@
 from modules.employer import *
 from modules.departament import *
+import pickle
 
 
 class Company:
@@ -32,6 +33,21 @@ class Company:
             if emp.id_employer >= int(id_to_rm):
                 emp.id_employer = emp.id_employer - 1
         emp.id = emp.id - 1
+
+    def remove_department(self):
+        Department.display_departments()
+        id_to_rm = self.find_department_id_by_name(input("Enter name of department to remove"))
+        if not id_to_rm:
+            print("Wrong id")
+            return False
+        for dep in self.departments:
+            if dep.id_department == int(id_to_rm):
+                self.employers.remove(dep)
+
+        for dep in self.departments:
+            if dep.id_department >= int(id_to_rm):
+                dep.id_department = dep.id_department - 1
+        dep.id = dep.id - 1
 
     def apply_bonus_to_employer(self):
         self.display_unattached_workers()
@@ -107,3 +123,9 @@ class Company:
             emp = self.find_employer_by_id(employer_id)
 
             dep.users.append(emp)
+
+    def save_employer_to_file(self, path):
+        with open(path, "wb+") as file:
+            for emp in self.employers:
+                file.write(str(emp))
+        file.close()
